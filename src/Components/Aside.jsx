@@ -10,7 +10,7 @@ function Aside() {
 
     return (
         <div>
-            <aside className="side-navigation text-center" style={{ width: '240px',height:'100vh', backgroundColor: '#333', padding: '20px', boxSizing: 'border-box', color: 'white' }}>
+            <aside className="side-navigation text-center" style={{ width: '240px', height: '100vh', backgroundColor: '#333', padding: '20px', boxSizing: 'border-box', color: 'white' }}>
                 <nav>
                     <Link to={'/'} className='fw-bold fs-3' style={{ textDecoration: 'none', color: '#ED7117' }} >
                         <i class="fa-solid fa-lock me-1 mt-2"></i>
@@ -18,7 +18,6 @@ function Aside() {
                     </Link>
                     <hr />
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-
                         {/* accordion */}
                         <div className="accordion mb-3" style={{ borderColor: '#333' }} >
                             <div className="accordion-item bg-dark">
@@ -32,9 +31,6 @@ function Aside() {
                                 </div>
                             </div>
                         </div>
-
-
-
                         <hr style={{ marginBottom: '25px' }} />
                         <Link to={'/trash'} style={{ textDecoration: 'none', color: 'white', marginBottom: '25px' }}><i class="fa-solid fa-trash me-2"></i>Trash</Link>
                         <Link to={'/upgrade'} style={{ textDecoration: 'none', color: 'white', marginBottom: '25px' }}><i class="fa-regular fa-star me-2"></i>Upgrade</Link>

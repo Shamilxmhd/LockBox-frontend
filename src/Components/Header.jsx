@@ -17,7 +17,6 @@ function Header() {
             </Link>
           </NavbarBrand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="m-auto">
               <Link to={'/benefits'} className='me-5' style={{ textDecoration: 'none' }}>Benefits</Link>

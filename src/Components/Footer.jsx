@@ -44,19 +44,19 @@ function Footer() {
               </div>
               <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                 <h6 className="text-uppercase fw-bold mb-4">
-                  Guides
+                Company
                 </h6>
                 <p>
-                  <a href="https://angular.io/" className="text-reset text-decoration-none">Angular</a>
+                  <a href="" className="text-reset text-decoration-none">About us</a>
                 </p>
                 <p>
-                  <a href="https://reactjs.org/" className="text-reset text-decoration-none">React</a>
+                  <a href="" className="text-reset text-decoration-none">News</a>
                 </p>
                 <p>
-                  <a href="https://vuejs.org/" className="text-reset text-decoration-none">Vue</a>
+                  <a href="" className="text-reset text-decoration-none">FAQs</a>
                 </p>
                 <p>
-                  <a href="https://laravel.com/" className="text-reset text-decoration-none">Laravel</a>
+                  <a href="" className="text-reset text-decoration-none">Report vulnerabilities</a>
                 </p>
               </div>
               <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">

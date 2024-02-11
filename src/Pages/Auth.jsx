@@ -13,8 +13,8 @@ function Auth({ insideRegister }) {
 
   return (
     <div className='d-flex justify-content-center align-items-center' style={{ width: '100%', height: '100vh', backgroundColor: '#FA8128' }}>
-      <div className='container w-75 ' >
-        <div className="card  shadow  " style={{ background: 'white' }}>
+      <div className='container w-75' >
+        <div className="card  shadow  " style={{ background: 'transparent' }}>
           <div className="row align-items-center">
             <div className="col-lg-6">
               <img className='rounded shadow' style={{ width: '100%', height: '638px' }} src={SignUpImage} alt="no image" />
@@ -50,10 +50,10 @@ function Auth({ insideRegister }) {
                     </div>
                   }
                   <div className='row text-center'>
-                    {insideRegister&&<div>
+                    {insideRegister && <div>
                       <span>Or </span>
                     </div>}
-                    {insideRegister&&<div className="d-grid gap-2">
+                    {insideRegister && <div className="d-grid gap-2">
                       <Button className='btn btn-light mb-2'> <i class="fa-brands fa-google me-1"></i>Continue with Google</Button>
                     </div>}
                     <Link to={'/home'}><i class="fa-solid fa-house fs-3"></i></Link>

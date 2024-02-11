@@ -142,7 +142,7 @@ function Home() {
             <p>Locker works on every device, operating system, and browser you are using.</p>
           </div>
         </div>
-      
+
       </div>
       <Footer />
     </>
