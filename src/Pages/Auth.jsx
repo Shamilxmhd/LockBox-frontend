@@ -77,7 +77,7 @@ function Auth({ insideRegister }) {
 
 
   return (
-    <div className='d-flex justify-content-center align-items-center' style={{ width: '100%', height: '100vh', backgroundColor: '#FA8128' }}>
+    <div className='d-flex justify-content-center align-items-center' style={{ width: '100%', height: '100vh', backgroundColor: '' }}>
       <div className='container w-75' >
         <div className="card  shadow  " style={{ background: 'transparent' }}>
           <div className="row align-items-center">

@@ -9,6 +9,11 @@ export const registerAPI = async (user) => {
 }
 
 // login API
- export const loginAPI = async(user)=>{
-    return await commonAPI("POST",`${SERVER_URL}/login`,user,"")
- }
+export const loginAPI = async (user) => {
+    return await commonAPI("POST", `${SERVER_URL}/login`, user, "")
+}
+
+//  addCard API
+export const addCardAPI = async (reqBody, reqHeader) => {
+    return await commonAPI("POST", `${SERVER_URL}/add-card`, reqBody, reqHeader)
+}

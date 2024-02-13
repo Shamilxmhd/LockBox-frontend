@@ -3,20 +3,63 @@ import { useState } from 'react';
 import WalletImage from '../assets/Images/Wallet.png'
 import { Button, Form } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { addCardAPI } from '../Services/allAPIs';
 
 
 function AddCard() {
   const [cardData, setCardData] = useState({
-    itemName: '', cardholderName: '', month: '', year: '', cvv: ''
+    itemName: '', cardholderName: '', cardNumber: '', month: '', year: '', cvv: ''
   })
   console.log(cardData);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false)
+    setCardData({ itemName: '', cardholderName: '', cardNumber: '', month: '', year: '', cvv: '' })
+  };
   const handleShow = () => setShow(true);
+
+
+  const handleAddCard = async () => {
+
+    const { itemName, cardholderName, cardNumber, month, year, cvv } = cardData
+    if (!itemName || !cardholderName || !cardNumber || !month || !year || !cvv) {
+      toast.info('please fill the form completely')
+    } else {
+     
+
+      // req header
+      const token = sessionStorage.getItem('token')
+      console.log(token);
+      if (token) {
+        const reqHeader = {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+        // api call
+        try {
+          const result = await addCardAPI(cardData, reqHeader)
+          console.log(result);
+          if (result.status === 200) {
+            console.log(result.data);
+            handleClose()
+
+          } else {
+            toast.warning(result.response.data)
+          }
+
+        } catch (err) {
+          console.log(result);
+        }
+      }
+
+    }
+  }
 
   return (
     <>
-      <div className='d-flex flex-column justify-content-center align-items-center ' style={{ height: '500px', width: '60rem' }}>
+      <div className='d-flex flex-column justify-content-center align-items-center ' style={{ height: '500px', width: '50rem' }}>
         <img style={{ width: '100px', height: '100px' }} src={WalletImage} alt="no image" />
         <p style={{ fontSize: '20px', fontWeight: '900' }}>Simplify online shopping</p>
         <p>Add payment card to autofill when shopping online</p>
@@ -41,6 +84,9 @@ function AddCard() {
               <div className="mb-3 rounded" >
                 <Form.Control type="text" placeholder="Cardholder name" onChange={e => setCardData({ ...cardData, cardholderName: e.target.value })} value={cardData.cardholderName} />
               </div>
+              <div className="mb-3 rounded" >
+                <Form.Control type="text" placeholder="Card number" onChange={e => setCardData({ ...cardData, cardNumber: e.target.value })} value={cardData.cardNumber} />
+              </div>
               <div className="mb-3" >
                 <div className='d-flex'>
                   <Form.Control className='me-5' type="text" placeholder="Expiration month" onChange={e => setCardData({ ...cardData, month: e.target.value })} value={cardData.month} />
@@ -53,13 +99,12 @@ function AddCard() {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button variant="primary">Add</Button>
+            <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+            <Button variant="primary" onClick={handleAddCard}>Add</Button>
           </Modal.Footer>
         </Modal>
       </div>
+      <ToastContainer />
     </>
   )
 }
