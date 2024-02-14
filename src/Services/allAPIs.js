@@ -1,4 +1,6 @@
 
+
+
 import { commonAPI } from "./commonAPI.JS"
 import { SERVER_URL } from "./serverUrl"
 
@@ -16,4 +18,9 @@ export const loginAPI = async (user) => {
 //  addCard API
 export const addCardAPI = async (reqBody, reqHeader) => {
     return await commonAPI("POST", `${SERVER_URL}/add-card`, reqBody, reqHeader)
+}
+
+// get user cards API
+export const getUserCardAPI = async(reqHeader)=>{
+    return await commonAPI("GET",`${SERVER_URL}/user-cards`,"",reqHeader)
 }
