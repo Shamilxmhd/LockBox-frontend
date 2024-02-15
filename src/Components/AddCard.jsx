@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import WalletImage from '../assets/Images/Wallet.png'
+
 import { Button, Form } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
@@ -25,9 +25,10 @@ function AddCard() {
 
     const { itemName, cardholderName, cardNumber, month, year, cvv } = cardData
     if (!itemName || !cardholderName || !cardNumber || !month || !year || !cvv) {
-      toast.info('please fill the form completely')
+      toast.info('please fill the form completely!!!')
+
     } else {
-     
+
 
       // req header
       const token = sessionStorage.getItem('token')
@@ -46,7 +47,7 @@ function AddCard() {
             handleClose()
 
           } else {
-            toast.warning(result.response.data)
+            toast.warning('result.response.data')
           }
 
         } catch (err) {
@@ -59,10 +60,8 @@ function AddCard() {
 
   return (
     <>
-      <div className='d-flex flex-column justify-content-center align-items-center ' style={{ height: '500px', width: '50rem' }}>
-        <img style={{ width: '100px', height: '100px' }} src={WalletImage} alt="no image" />
-        <p style={{ fontSize: '20px', fontWeight: '900' }}>Simplify online shopping</p>
-        <p>Add payment card to autofill when shopping online</p>
+      <div className=' '>
+
         <Button onClick={handleShow}>Add Payment Card</Button>
 
         {/* Modal */}
@@ -104,7 +103,7 @@ function AddCard() {
           </Modal.Footer>
         </Modal>
       </div>
-      <ToastContainer />
+      <ToastContainer theme='colored' position='top-center' />
     </>
   )
 }
