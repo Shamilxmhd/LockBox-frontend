@@ -1,22 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
-
 import { Button, Form } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addCardAPI } from '../Services/allAPIs';
+import { addCardResponseContext } from '../ContextAPI/ContextShare';
 
 
 function AddCard() {
+  const { addCardResponse, setAddCardResponse } = useContext(addCardResponseContext)
   const [cardData, setCardData] = useState({
-    itemName: '', cardholderName: '', cardNumber: '', month: '', year: '', cvv: ''
+    itemName: '',
+    cardholderName: '',
+    cardNumber: '',
+    month: '',
+    year: '',
+    cvv: ''
   })
   console.log(cardData);
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false)
-    setCardData({ itemName: '', cardholderName: '', cardNumber: '', month: '', year: '', cvv: '' })
+    setCardData({
+      itemName: '',
+      cardholderName: '',
+      cardNumber: '',
+      month: '',
+      year: '',
+      cvv: ''
+    })
   };
   const handleShow = () => setShow(true);
 
@@ -45,7 +58,7 @@ function AddCard() {
           if (result.status === 200) {
             console.log(result.data);
             handleClose()
-
+            setAddCardResponse(result.data)
           } else {
             toast.warning('result.response.data')
           }

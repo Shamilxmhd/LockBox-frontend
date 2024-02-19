@@ -21,6 +21,11 @@ export const addCardAPI = async (reqBody, reqHeader) => {
 }
 
 // get user cards API
-export const getUserCardAPI = async(reqHeader)=>{
-    return await commonAPI("GET",`${SERVER_URL}/user-cards`,"",reqHeader)
+export const getUserCardAPI = async (reqHeader) => {
+    return await commonAPI("GET", `${SERVER_URL}/user-cards`, "", reqHeader)
+}
+
+// edit card API
+export const editCardAPI = async (id, reqBody, reqHeader) => {
+    return await commonAPI("PUT", `${SERVER_URL}/card/edit/${id}`, reqBody, reqHeader)
 }
