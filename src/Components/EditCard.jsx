@@ -9,7 +9,6 @@ import { editCardAPI } from '../Services/allAPIs';
 import { editCardResponseContext } from '../ContextAPI/ContextShare';
 
 
-
 function EditCard({ card }) {
   const { editCardResponse, setEditCardResponse } = useContext(editCardResponseContext)
   const [cardData, setCardData] = useState({
@@ -35,9 +34,6 @@ function EditCard({ card }) {
     })
     setShow(true)
   }
-
-
-
   const handleClose = () => {
     setShow(false)
 
@@ -80,7 +76,7 @@ function EditCard({ card }) {
 
   return (
     <>
-      <button onClick={handleShow} className='btn'><i className="fa-regular fa-pen-to-square text-dark"></i></button>
+      <button style={{marginRight:'-25px'}} onClick={handleShow} className='btn'><i className="fa-regular fa-pen-to-square text-dark"></i></button>
       <Modal
         show={show}
         onHide={handleClose}

@@ -60,7 +60,7 @@ function AddCard() {
             handleClose()
             setAddCardResponse(result.data)
           } else {
-            toast.warning('result.response.data')
+            toast.warning(result.response.data)
           }
 
         } catch (err) {
@@ -109,6 +109,7 @@ function AddCard() {
                 <Form.Control type="password" placeholder="Security Code (CVV)" onChange={e => setCardData({ ...cardData, cvv: e.target.value })} value={cardData.cvv} />
               </div>
             </Form>
+            
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>Cancel</Button>

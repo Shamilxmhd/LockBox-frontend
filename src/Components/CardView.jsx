@@ -1,21 +1,45 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Button, Modal, Table } from 'react-bootstrap'
 import EditCard from './EditCard';
+import { deleteCardAPI } from '../Services/allAPIs';
+import { toast } from 'react-toastify';
+import { removeCardResponseContext } from '../ContextAPI/ContextShare';
 
 
 function CardView({ card }) {
- 
+  const { removeCardResponse, setRemoveCardResponse } = useContext(removeCardResponseContext)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
- 
+  const handleDeleteCard = async (cid) => {
+    const token = sessionStorage.getItem('token')
+    if (token) {
+      const reqHeader = {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+      try {
+        const result = await deleteCardAPI(cid, reqHeader)
+        if (result.status == 200) {
+          setRemoveCardResponse()
+        } else {
+          toast.warning(result.response.data)
+        }
+
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
+
+
   return (
     <>
-      <td onClick={handleShow}>{card.itemName}</td>
+     <button className='btn'> <td className='fw-bold ' onClick={handleShow}>{card.itemName}</td></button>
       <td>{card.cardholderName}</td>
       <td>3 minutes ago</td>
-      <td><EditCard card={card} /><i className="fa-solid fa-trash text-danger"></i></td>
+      <td><EditCard card={card} /><button className='btn' onClick={() => { handleDeleteCard(card?._id) }}><i className="fa-solid fa-trash text-danger"></i></button></td>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>itemName : {card.itemName}</Modal.Body>
         <Modal.Body>Cardholder name :{card.cardholderName} </Modal.Body>

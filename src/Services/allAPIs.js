@@ -1,6 +1,3 @@
-
-
-
 import { commonAPI } from "./commonAPI.JS"
 import { SERVER_URL } from "./serverUrl"
 
@@ -28,4 +25,30 @@ export const getUserCardAPI = async (reqHeader) => {
 // edit card API
 export const editCardAPI = async (id, reqBody, reqHeader) => {
     return await commonAPI("PUT", `${SERVER_URL}/card/edit/${id}`, reqBody, reqHeader)
+}
+
+//removecard API
+export const deleteCardAPI = async (id, reqHeader) => {
+    return await commonAPI("DELETE", `${SERVER_URL}/card/remove/${id}`, {}, reqHeader)
+}
+
+
+// addIdentity API
+export const addIdentityAPI = async (reqBody, reqHeader) => {
+    return await commonAPI("POST", `${SERVER_URL}/add-identity`, reqBody, reqHeader)
+}
+
+// get user Identities API
+export const getUserIdentityAPI = async (reqHeader) => {
+    return await commonAPI("GET", `${SERVER_URL}/user-identities`, "", reqHeader)
+}
+
+// edit Identity API 
+export const editIdentityAPI = async (id, reqBody, reqHeader) => {
+    return await commonAPI("PUT", `${SERVER_URL}/identity/edit/${id}`, reqBody, reqHeader)
+}
+
+// remove Identity API 
+export const deleteIdentityAPI = async (id, reqHeader) => {
+    return await commonAPI("DELETE", `${SERVER_URL}/identity/remove/${id}`, {}, reqHeader)
 }

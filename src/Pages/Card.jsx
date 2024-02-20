@@ -3,26 +3,16 @@ import Aside from '../Components/Aside'
 import AddCard from '../Components/AddCard'
 import { getUserCardAPI } from '../Services/allAPIs'
 import { Table } from 'react-bootstrap'
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom'
 import WalletImage from '../assets/Images/Wallet.png'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addCardResponseContext, editCardResponseContext } from '../ContextAPI/ContextShare'
-import EditCard from '../Components/EditCard'
+import { addCardResponseContext, editCardResponseContext, removeCardResponseContext } from '../ContextAPI/ContextShare'
 import CardView from '../Components/CardView'
 
-
-
 function Card() {
+  const { removeCardResponse, setRemoveCardResponse } = useContext(removeCardResponseContext)
   const { addCardResponse, setAddCardResponse } = useContext(addCardResponseContext)
-  const {editCardResponse,setEditCardResponse} = useContext(editCardResponseContext)
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const { editCardResponse, setEditCardResponse } = useContext(editCardResponseContext)
 
   const [allCards, setAllCards] = useState([])
   const [username, setUsername] = useState()
@@ -40,9 +30,7 @@ function Card() {
         console.log(result);
       }
     }
-
   }
-
 
 
   useEffect(() => {
@@ -52,9 +40,11 @@ function Card() {
     } else {
       setUsername('')
     }
-  }, [addCardResponse,editCardResponse])
+  }, [addCardResponse, editCardResponse,removeCardResponse])
+
 
   return (
+
     <div className='row'>
       <div className='col-lg-3'>
         <Aside />
