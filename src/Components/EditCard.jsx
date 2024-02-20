@@ -23,10 +23,7 @@ function EditCard({ card }) {
   })
 
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true)
-
-  const handleClose = () => {
-    setShow(false)
+  const handleShow = () => {
     setCardData({
       id: card._id,
       itemName: card.itemName,
@@ -36,6 +33,14 @@ function EditCard({ card }) {
       year: card.year,
       cvv: card.cvv
     })
+    setShow(true)
+  }
+
+
+
+  const handleClose = () => {
+    setShow(false)
+
   }
 
   const handleUpdate = async () => {
@@ -58,7 +63,8 @@ function EditCard({ card }) {
           console.log(result);
           if (result.status == 200) {
             handleClose()
-            setEditCardResponse()
+            setEditCardResponse(result.data)
+
           } else {
             toast.warning(result.response.data)
           }
