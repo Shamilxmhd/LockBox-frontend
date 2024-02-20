@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -6,11 +6,12 @@ import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { editCardAPI } from '../Services/allAPIs';
+import { editCardResponseContext } from '../ContextAPI/ContextShare';
 
 
 
 function EditCard({ card }) {
- 
+  const { editCardResponse, setEditCardResponse } = useContext(editCardResponseContext)
   const [cardData, setCardData] = useState({
     id: card._id,
     itemName: card.itemName,
@@ -38,8 +39,8 @@ function EditCard({ card }) {
   }
 
   const handleUpdate = async () => {
-    const {  itemName, cardholderName, cardNumber, month, year, cvv } = cardData
-   
+    const { itemName, cardholderName, cardNumber, month, year, cvv } = cardData
+
     if (!itemName || !cardholderName || !cardNumber || !month || !year || !cvv) {
       toast.info('Please fill the form completely!!!')
     } else {
@@ -53,11 +54,11 @@ function EditCard({ card }) {
         }
         // api call
         try {
-          const result = await editCardAPI(cardData.id,cardData,reqHeader)
+          const result = await editCardAPI(cardData.id, cardData, reqHeader)
           console.log(result);
           if (result.status == 200) {
             handleClose()
-
+            setEditCardResponse()
           } else {
             toast.warning(result.response.data)
           }

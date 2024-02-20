@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button, Modal, Table } from 'react-bootstrap'
 import EditCard from './EditCard';
 
+
 function CardView({ card }) {
+ 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+ 
   return (
     <>
       <td onClick={handleShow}>{card.itemName}</td>

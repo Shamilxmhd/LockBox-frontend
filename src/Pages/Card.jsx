@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import WalletImage from '../assets/Images/Wallet.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addCardResponseContext } from '../ContextAPI/ContextShare'
+import { addCardResponseContext, editCardResponseContext } from '../ContextAPI/ContextShare'
 import EditCard from '../Components/EditCard'
 import CardView from '../Components/CardView'
 
@@ -17,6 +17,7 @@ import CardView from '../Components/CardView'
 
 function Card() {
   const { addCardResponse, setAddCardResponse } = useContext(addCardResponseContext)
+  const {editCardResponse,setEditCardResponse} = useContext(editCardResponseContext)
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -51,7 +52,7 @@ function Card() {
     } else {
       setUsername('')
     }
-  }, [addCardResponse])
+  }, [addCardResponse,editCardResponse])
 
   return (
     <div className='row'>
