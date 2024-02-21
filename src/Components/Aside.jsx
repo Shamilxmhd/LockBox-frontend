@@ -32,7 +32,6 @@ function Aside() {
                             </div>
                         </div>
                         <hr style={{ marginBottom: '25px' }} />
-                        <Link to={'/trash'} style={{ textDecoration: 'none', color: 'white', marginBottom: '25px' }}><i class="fa-solid fa-trash me-2"></i>Trash</Link>
                         <Link to={'/upgrade'} style={{ textDecoration: 'none', color: 'white', marginBottom: '25px' }}><i class="fa-regular fa-star me-2"></i>Upgrade</Link>
                         <Link to={'/settings'} style={{ textDecoration: 'none', color: 'white', marginBottom: '25px' }}><i class="fa-solid fa-gear me-2"></i>Settings</Link>
                     </div>

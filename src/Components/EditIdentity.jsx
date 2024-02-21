@@ -79,7 +79,7 @@ function EditIdentity({ identity }) {
 
   return (
     <>
-      <button  className='btn' onClick={handleShow}><i className="fa-regular fa-pen-to-square text-dark"></i></button>
+      <button style={{marginRight:'-25px'}}  className='btn' onClick={handleShow}><i className="fa-regular fa-pen-to-square text-dark"></i></button>
       <Modal
         show={show}
         onHide={handleClose}

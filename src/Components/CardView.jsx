@@ -36,7 +36,7 @@ function CardView({ card }) {
 
   return (
     <>
-     <button className='btn'> <td className='fw-bold ' onClick={handleShow}>{card.itemName}</td></button>
+     <button className='btn'> <td className='fw-bold fs-5' style={{color:'#ED7117'}} onClick={handleShow}>{card.itemName}</td></button>
       <td>{card.cardholderName}</td>
       <td>3 minutes ago</td>
       <td><EditCard card={card} /><button className='btn' onClick={() => { handleDeleteCard(card?._id) }}><i className="fa-solid fa-trash text-danger"></i></button></td>

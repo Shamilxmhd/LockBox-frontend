@@ -37,12 +37,11 @@ function IdentityView({ identity }) {
   return (
     <>
      <button className='btn'> <td className='fw-bold fs-5' style={{color:'#ED7117'}} onClick={handleShow}>{identity.itemName}</td></button>
-      <td></td>
+      <td>{identity.firstName}</td>
       <td>3 minutes ago</td>
       <td><EditIdentity identity={identity} /><button className='btn' onClick={() => { handleDeleteIdentity(identity?._id) }}><i className="fa-solid fa-trash text-danger"></i></button></td>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Body>Item name : {identity.itemName} </Modal.Body>
-        <h4 className='ms-3'>Personal Information</h4>
+      <h4 className='ms-3 mt-2'>Personal Information</h4>
         <Modal.Body>First name : {identity.firstName} </Modal.Body>
         <Modal.Body>Last name : {identity.lastName} </Modal.Body>
         <Modal.Body>Username : {identity.username} </Modal.Body>

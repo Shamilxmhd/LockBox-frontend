@@ -10,7 +10,7 @@ function Settings() {
       <Aside />
       <div style={{ padding: '20px' }}>
         <h1></h1>
-        <hr />
+       
         <h1 className=''>Account</h1>
         <hr />
         <Profile/>

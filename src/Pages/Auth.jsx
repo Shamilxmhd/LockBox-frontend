@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import SignUpImage from '../assets/Images/SignUp.jpeg'
 import { Button, Form } from 'react-bootstrap'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { loginAPI, registerAPI } from '../Services/allAPIs';
+import { tokenAuthContext } from '../ContextAPI/TokenAuth';
 
 
 function Auth({ insideRegister }) {
+  const { isAutherised, setIsAutherised } = useContext(tokenAuthContext)
 
   const navigate = useNavigate()
 
@@ -60,6 +62,7 @@ function Auth({ insideRegister }) {
           sessionStorage.setItem('username', result.data.existingUser.username)
           sessionStorage.setItem('token', result.data.token)
           sessionStorage.setItem('userDetails', JSON.stringify(result.data.existingUser))
+          setIsAutherised(true)
           setTimeout(() => {
             setUserData({ email: '', password: '' })
             navigate('/cards')

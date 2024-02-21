@@ -48,8 +48,8 @@ function Identity() {
       <div className='col-lg-3'>
         <Aside />
       </div>
-      <div className='col-lg-8'>
-        <h4>Welcome <span className='text-warning'>{username}</span> </h4>
+      <div className='col-lg-8 p-3'>
+        <h4>Welcome <span style={{color:'#ED7117'}}>{username}</span> </h4>
         <hr />
         <h1 className=''>Identites</h1>
         <hr />
@@ -61,7 +61,7 @@ function Identity() {
             <thead>
               <tr>
                 <th></th>
-                <th></th>
+                <th>First name</th>
                 <th>created time</th>
                 <th>Actions</th>
               </tr>
@@ -78,11 +78,13 @@ function Identity() {
             </tbody>
           </Table>
             :
-            <div className="w-100">
-              <img style={{ width: '100px', height: '100px' }} src={IdentityImage} alt="no image" />
-              <p style={{ fontSize: '20px', fontWeight: '900' }}>Fill online forms faster</p>
-              <p>Add Identity card so that Locker can autofill online forms on behalf of you.</p>
-              <div><AddIdentity /></div>
+            <div className="d-flex flex-column align-items-center p-5">
+             <div className='text-center'>
+                <img style={{ width: '100px', height: '100px' }} src={IdentityImage} alt="no image" />
+                <p style={{ fontSize: '20px', fontWeight: '900' }}>Fill online forms faster</p>
+                <p>Add Identity card so that Locker can autofill online forms on behalf of you.</p>
+                <div><AddIdentity /></div>
+             </div>
             </div>
           }
         </div>

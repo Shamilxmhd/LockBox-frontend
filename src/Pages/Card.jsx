@@ -49,8 +49,8 @@ function Card() {
       <div className='col-lg-3'>
         <Aside />
       </div>
-      <div className='col-lg-8'>
-        <h4>Welcome <span className='text-warning'>{username}</span> </h4>
+      <div className='col-lg-8 p-3'>
+        <h4>Welcome <span style={{color:'#ED7117'}}>{username}</span> </h4>
         <hr />
         <h1 className=''>Cards</h1>
         <hr />
@@ -78,11 +78,13 @@ function Card() {
             </tbody>
           </Table>
             :
-            <div className='w-100'>
-              <img style={{ width: '100px', height: '100px' }} src={WalletImage} alt="no image" />
-              <p style={{ fontSize: '20px', fontWeight: '900' }}>Simplify online shopping</p>
-              <p>Add payment card to autofill when shopping online</p>
-              <div> <AddCard /></div>
+            <div className=' d-flex flex-column align-items-center p-5'>
+             <div className='text-center'>
+                <img style={{ width: '100px', height: '100px' }} src={WalletImage} alt="no image" />
+                <p style={{ fontSize: '20px', fontWeight: '900' }}>Simplify online shopping</p>
+                <p>Add payment card to autofill when shopping online</p>
+                <div> <AddCard /></div>
+             </div>
             </div>
           }
         </div>
