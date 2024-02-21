@@ -10,9 +10,9 @@ function Aside() {
 
     return (
         <div>
-            <aside className="side-navigation text-center" style={{ width: '240px', height: '100vh', backgroundColor: '#333', padding: '20px', boxSizing: 'border-box', color: 'white' }}>
+            <aside className="side-navigation text-center" style={{ width: '', height: '100vh', backgroundColor: '#333', padding: '20px', boxSizing: 'border-box', color: 'white' }}>
                 <nav>
-                    <Link to={'/'} className='fw-bold fs-3' style={{ textDecoration: 'none', color: '#ED7117' }} >
+                    <Link to={'/cards'} className='fw-bold fs-3' style={{ textDecoration: 'none', color: '#ED7117' }} >
                         <i class="fa-solid fa-lock me-1 mt-2"></i>
                         <span>LockBox</span>
                     </Link>

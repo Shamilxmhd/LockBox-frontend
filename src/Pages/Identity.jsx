@@ -45,17 +45,23 @@ function Identity() {
   return (
 
     <div className='row'>
-      <div className='col-lg-3'>
+      <div className='col-lg-2'>
         <Aside />
       </div>
-      <div className='col-lg-8 p-3'>
-        <h4>Welcome <span style={{color:'#ED7117'}}>{username}</span> </h4>
+      <div className='col-lg-9 p-4'>
+        <div className='text-end'>
+          <h4 style={{ fontFamily: ' "Anta", sans-serif' }}>Welcome <span style={{ color: '#ED7117' }}>{username}</span> </h4>
+        </div>
         <hr />
-        <h1 className=''>Identites</h1>
+        <div>
+          <h1 style={{fontFamily:'"Kanit", sans-serif'}} className='fw-bold'>Identites</h1>
+        </div>
         <hr />
-        {allIdentities?.length > 0 ? <AddIdentity />
-          : null
-        }
+        <div>
+          {allIdentities?.length > 0 ? <AddIdentity />
+            : null
+          }
+        </div>
         <div className="w-100">
           {allIdentities.length > 0 ? <Table>
             <thead>
@@ -79,12 +85,12 @@ function Identity() {
           </Table>
             :
             <div className="d-flex flex-column align-items-center p-5">
-             <div className='text-center'>
+              <div className='text-center'>
                 <img style={{ width: '100px', height: '100px' }} src={IdentityImage} alt="no image" />
                 <p style={{ fontSize: '20px', fontWeight: '900' }}>Fill online forms faster</p>
                 <p>Add Identity card so that Locker can autofill online forms on behalf of you.</p>
                 <div><AddIdentity /></div>
-             </div>
+              </div>
             </div>
           }
         </div>

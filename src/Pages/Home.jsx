@@ -23,12 +23,13 @@ function Home() {
         {/* part 1 */}
         <div className="row align-items-center" style={{ marginTop: '90px' }}>
           <div className="col-lg-2"></div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 mt-2">
             <h1 className=''>Enjoy A Secure and Seamless Internet Experience</h1>
             <hr />
             <p>Store your passwords, manage sensitive data, fill in forms and log you into your favorite sites with just one click. Locker is here to help.</p>
-            <Link to={'/register'} className='btn btn-warning' style={{ textDecoration: 'none', }} >Create an Account</Link>
-
+            <div className={(window.innerWidth <= 576 ? ' text-center' : '')}>
+              <Link to={'/register'} className='btn btn-warning' style={{ textDecoration: 'none' }}>Create an Account</Link>
+            </div>
 
           </div>
           <div className="col-lg-6">
@@ -42,8 +43,8 @@ function Home() {
             <span style={{ fontSize: '40px', fontWeight: '700' }}>Vault</span>
           </div>
           {/* cards */}
-          <div className='d-flex flex-wrap justify-content-between mt-5 ms-auto'>
-            <Card style={{ width: '16rem' }} className='mb-3'>
+          <div className='d-flex flex-wrap justify-content-between mt-5'>
+            <Card style={{ width: '16rem' }} className='mb-3 mx-auto'>
               <Card.Body>
                 <span style={{ fontSize: '22px', fontWeight: '800', color: 'black' }}>Data Encyption</span>
                 <Card.Text>
@@ -51,7 +52,7 @@ function Home() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card style={{ width: '16rem' }} className='mb-3'>
+            <Card style={{ width: '16rem' }} className='mb-3 mx-auto'>
               <Card.Body>
                 <span style={{ fontSize: '22px', fontWeight: '800', color: 'black' }}>Zero-Knowledge</span>
                 <Card.Text>
@@ -59,7 +60,7 @@ function Home() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card style={{ width: '16rem' }} className='mb-3'>
+            <Card style={{ width: '16rem' }} className='mb-3 mx-auto '>
               <Card.Body>
                 <span style={{ fontSize: '22px', fontWeight: '800', color: 'black' }}>Secure Infrastructure</span>
                 <Card.Text>
@@ -67,7 +68,7 @@ function Home() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card style={{ width: '16rem' }} className='mb-3'>
+            <Card style={{ width: '16rem' }} className='mb-3 mx-auto'>
               <Card.Body>
                 <span style={{ fontSize: '22px', fontWeight: '800', color: 'black' }}>Crowdsourced Testing</span>
                 <Card.Text>
@@ -84,21 +85,21 @@ function Home() {
         {/* part 3 */}
         <div className='row align-items-center mt-5'>
           <div className="col-lg-2"></div>
-          <div className="col-lg-4">
-            <h1>Logins Made Simple</h1>
+          <div className="col-lg-4 text-center">
+            <h1 className=''>Logins Made Simple</h1>
             <p>Store your passwords, manage sensitive data, fill in forms and log you into your favorite sites with just one click. Locker is here to help.</p>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-6 text-center">
             <img className='img-fluid' src={LoginImage} alt="no image" />
           </div>
         </div>
         {/* part 4  */}
         <div className="row align-items-center mt-5">
           <div className="col-lg-1"></div>
-          <div className="col-lg-5">
+          <div className="col-lg-5 text-center">
             <img className='img-fluid' style={{ height: '350px', width: '350px' }} src={CreditCardImage} alt="" />
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 text-center">
             <h1>Browse and Shop In Minutes</h1>
             <p>Locker automatically fills in your login details and credit card information for a smooth checkout process. Shopping takes time, but not paying.</p>
           </div>
@@ -106,12 +107,12 @@ function Home() {
         {/* part 5 */}
         <div className='row align-items-center mt-5'>
           <div className="col-lg-2"></div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 text-center">
             <h1>Save Time and Efforts</h1>
             <p>Save your valuable time and efforts for other activities other than filling passwords and personal details. Trust those tedious tasks to Locker.</p>
           </div>
-          <div className="col-lg-6 mb-5">
-            <img style={{ height: '', width: '', marginTop: '-6px' }} src={TimeImage} alt="no image" />
+          <div className="col-lg-6 mb-5 text-center">
+            <img style={{ marginTop: '-6px' }} src={TimeImage} alt="no image" />
           </div>
         </div>
         {/* part 6 */}

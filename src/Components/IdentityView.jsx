@@ -36,7 +36,7 @@ function IdentityView({ identity }) {
 
   return (
     <>
-     <button className='btn'> <td className='fw-bold fs-5' style={{color:'#ED7117'}} onClick={handleShow}>{identity.itemName}</td></button>
+     <button className='btn'> <td className='fw-bolder fs-5' style={{color:'#ED7117'}} onClick={handleShow}>{identity.itemName}</td></button>
       <td>{identity.firstName}</td>
       <td>3 minutes ago</td>
       <td><EditIdentity identity={identity} /><button className='btn' onClick={() => { handleDeleteIdentity(identity?._id) }}><i className="fa-solid fa-trash text-danger"></i></button></td>

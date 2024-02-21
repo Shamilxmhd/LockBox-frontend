@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { useState } from 'react';
-import { Button, Form } from 'react-bootstrap'
+import { Button, FloatingLabel, Form } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -89,16 +89,16 @@ function AddCard() {
           </Modal.Header>
           <Modal.Body>
             <Form >
-              <div className="mb-3 rounded" >
+              <FloatingLabel className="mb-3 rounded" label="Item name" >
                 <Form.Control type="text" placeholder="Item name" onChange={e => setCardData({ ...cardData, itemName: e.target.value })} value={cardData.itemName} />
-              </div>
+              </FloatingLabel>
               <Form.Label className='fw-bold'>Card Information</Form.Label>
-              <div className="mb-3 rounded" >
+              <FloatingLabel className="mb-3 rounded" label="Item name" >
                 <Form.Control type="text" placeholder="Cardholder name" onChange={e => setCardData({ ...cardData, cardholderName: e.target.value })} value={cardData.cardholderName} />
-              </div>
-              <div className="mb-3 rounded" >
+              </FloatingLabel>
+              <FloatingLabel className="mb-3 rounded" label="Item name" >
                 <Form.Control type="text" placeholder="Card number" onChange={e => setCardData({ ...cardData, cardNumber: e.target.value })} value={cardData.cardNumber} />
-              </div>
+              </FloatingLabel>
               <div className="mb-3" >
                 <div className='d-flex'>
                   <Form.Control className='me-5' type="text" placeholder="Expiration month" onChange={e => setCardData({ ...cardData, month: e.target.value })} value={cardData.month} />
@@ -109,7 +109,7 @@ function AddCard() {
                 <Form.Control type="password" placeholder="Security Code (CVV)" onChange={e => setCardData({ ...cardData, cvv: e.target.value })} value={cardData.cvv} />
               </div>
             </Form>
-            
+
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>Cancel</Button>

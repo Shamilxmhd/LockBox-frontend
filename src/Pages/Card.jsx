@@ -40,51 +40,58 @@ function Card() {
     } else {
       setUsername('')
     }
-  }, [addCardResponse, editCardResponse,removeCardResponse])
+  }, [addCardResponse, editCardResponse, removeCardResponse])
 
 
   return (
 
     <div className='row'>
-      <div className='col-lg-3'>
+      <div className='col-lg-2'>
         <Aside />
       </div>
-      <div className='col-lg-8 p-3'>
-        <h4>Welcome <span style={{color:'#ED7117'}}>{username}</span> </h4>
+      <div className='col-lg-9 p-4'>
+        <div className='text-end'>
+          <h4 style={{ fontFamily: ' "Anta", sans-serif' }}>Welcome <span style={{ color: '#ED7117', }}>{username}</span> </h4>
+        </div>
         <hr />
-        <h1 className=''>Cards</h1>
+        <div>
+          <h1 style={{fontFamily:'"Kanit", sans-serif'}} className=''>Cards</h1>
+        </div>
         <hr />
-        {allCards?.length > 0 ?
-          <AddCard />
-          :
-          null}
-        <div className='w-100'>
-          {allCards.length > 0 ? <Table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Cardholder name</th>
-                <th>created time</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allCards?.length > 0 ? allCards.map(card => (
+        <div>
+          {allCards?.length > 0 ?
+            <AddCard />
+            :
+            null}
+        </div>
+        <div>
+          {allCards.length > 0 ?
+            <Table>
+              <thead>
                 <tr>
-                  <CardView card={card} />
+                  <th></th>
+                  <th>Cardholder name</th>
+                  <th>created time</th>
+                  <th>Actions</th>
                 </tr>
-              )) : null
-              }
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {allCards?.length > 0 ? allCards.map(card => (
+                  <tr>
+                    <CardView card={card} />
+                  </tr>
+                )) : null
+                }
+              </tbody>
+            </Table>
             :
             <div className=' d-flex flex-column align-items-center p-5'>
-             <div className='text-center'>
+              <div className='text-center'>
                 <img style={{ width: '100px', height: '100px' }} src={WalletImage} alt="no image" />
                 <p style={{ fontSize: '20px', fontWeight: '900' }}>Simplify online shopping</p>
                 <p>Add payment card to autofill when shopping online</p>
                 <div> <AddCard /></div>
-             </div>
+              </div>
             </div>
           }
         </div>

@@ -61,7 +61,8 @@ function Auth({ insideRegister }) {
         if (result.status == 200) {
           sessionStorage.setItem('username', result.data.existingUser.username)
           sessionStorage.setItem('token', result.data.token)
-          sessionStorage.setItem('userDetails', JSON.stringify(result.data.existingUser))
+                 sessionStorage.setItem('userDetails', JSON.stringify(result.data.existingUser))
+          sessionStorage.setItem('email',result.data.existingUser.email)
           setIsAutherised(true)
           setTimeout(() => {
             setUserData({ email: '', password: '' })
