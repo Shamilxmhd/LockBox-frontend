@@ -11,7 +11,7 @@ import GooglePlayImage from '../assets/Images/GooglePlay.png'
 import AppStoreImage from '../assets/Images/AppStore.png'
 import LapScreenImage from '../assets/Images/LapScreen.png'
 import Footer from '../Components/Footer'
-
+import '../home.css'
 
 
 function Home() {
@@ -44,7 +44,7 @@ function Home() {
           </div>
           {/* cards */}
           <div className='d-flex flex-wrap justify-content-between mt-5'>
-            <Card style={{ width: '16rem' }} className='mb-3 mx-auto'>
+            <Card style={{ width: '16rem' }} className='hover mb-3 mt-3 mx-auto'>
               <Card.Body>
                 <span style={{ fontSize: '22px', fontWeight: '800', color: 'black' }}>Data Encyption</span>
                 <Card.Text>
@@ -52,7 +52,7 @@ function Home() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card style={{ width: '16rem' }} className='mb-3 mx-auto'>
+            <Card style={{ width: '16rem' }} className='hover mb-3 mt-3 mx-auto'>
               <Card.Body>
                 <span style={{ fontSize: '22px', fontWeight: '800', color: 'black' }}>Zero-Knowledge</span>
                 <Card.Text>
@@ -60,7 +60,7 @@ function Home() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card style={{ width: '16rem' }} className='mb-3 mx-auto '>
+            <Card style={{ width: '16rem' }} className='hover mb-3 mt-3 mx-auto '>
               <Card.Body>
                 <span style={{ fontSize: '22px', fontWeight: '800', color: 'black' }}>Secure Infrastructure</span>
                 <Card.Text>
@@ -68,7 +68,7 @@ function Home() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card style={{ width: '16rem' }} className='mb-3 mx-auto'>
+            <Card style={{ width: '16rem' }} className='hover mb-3 mt-3 mx-auto'>
               <Card.Body>
                 <span style={{ fontSize: '22px', fontWeight: '800', color: 'black' }}>Crowdsourced Testing</span>
                 <Card.Text>
@@ -78,7 +78,7 @@ function Home() {
             </Card>
           </div>
           <div className='text-center mt-5' >
-            <Link to={''} style={{ textDecoration: 'none' }} className='btn btn-outline-warning'>See more</Link>
+            <Link to={'/benefits'} style={{ textDecoration: 'none' }} className='btn btn-outline-warning'>See more</Link>
           </div>
         </div>
 

@@ -42,10 +42,10 @@ function CardView({ card }) {
       <td><EditCard card={card} /><button className='btn' onClick={() => { handleDeleteCard(card?._id) }}><i className="fa-solid fa-trash text-danger"></i></button></td>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>itemName : {card.itemName}</Modal.Body>
-        <Modal.Body>Cardholder name :{card.cardholderName} </Modal.Body>
+        <Modal.Body>Cardholder name : {card.cardholderName} </Modal.Body>
         <Modal.Body>Card number : {card.cardNumber}</Modal.Body>
         <Modal.Body>Expiration month : {card.month}</Modal.Body>
-        <Modal.Body>Expiration year: {card.year}</Modal.Body>
+        <Modal.Body>Expiration year : {card.year}</Modal.Body>
         <Modal.Body>Security Code (CVV) : {card.cvv}</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SignUpImage from '../assets/Images/SignUp.jpeg'
 import { Button, Form } from 'react-bootstrap'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
@@ -6,9 +6,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { loginAPI, registerAPI } from '../Services/allAPIs';
 import { tokenAuthContext } from '../ContextAPI/TokenAuth';
-
+import PulseLoader from "react-spinners/PulseLoader";
+import HashLoader from "react-spinners/HashLoader";
 
 function Auth({ insideRegister }) {
+  const [loading, setLoading] = useState(false)
+
+
+
   const { isAutherised, setIsAutherised } = useContext(tokenAuthContext)
 
   const navigate = useNavigate()
@@ -33,9 +38,11 @@ function Auth({ insideRegister }) {
         if (result.status == 200) {
           toast.success(`${result.data.username} has registered successfully`)
           setUserData({ username: '', email: '', password: '' })
+          setLoading(true)
           setTimeout(() => {
             navigate('/login')
-          }, 3000);
+            setLoading(false)
+          }, 2000);
         } else {
           toast.warning(result.response.data);
         }
@@ -52,7 +59,7 @@ function Auth({ insideRegister }) {
     console.log(userData);
     const { email, password } = userData
     if (!email || !password) {
-      toast.info('please fill the form completely!!!')
+      toast.info('Please fill the form completely!!!')
     } else {
       // api call
       try {
@@ -61,10 +68,12 @@ function Auth({ insideRegister }) {
         if (result.status == 200) {
           sessionStorage.setItem('username', result.data.existingUser.username)
           sessionStorage.setItem('token', result.data.token)
-                 sessionStorage.setItem('userDetails', JSON.stringify(result.data.existingUser))
-          sessionStorage.setItem('email',result.data.existingUser.email)
+          sessionStorage.setItem('userDetails', JSON.stringify(result.data.existingUser))
+          sessionStorage.setItem('email', result.data.existingUser.email)
           setIsAutherised(true)
+          setLoading(true)
           setTimeout(() => {
+            setLoading(false)
             setUserData({ email: '', password: '' })
             navigate('/cards')
 
@@ -79,6 +88,10 @@ function Auth({ insideRegister }) {
 
   }
 
+  const [Show, setShow] = useState(false)
+  const handleShow = () => {
+    setShow(!Show)
+  }
 
   return (
     <div className='d-flex justify-content-center align-items-center' style={{ width: '100%', height: '100vh', backgroundColor: '' }}>
@@ -108,13 +121,30 @@ function Auth({ insideRegister }) {
                   <Form.Group className="mb-2" controlId="formBasicPassword">
                     <span style={{ fontWeight: '600', fontSize: '20px' }} className='text-dark'>Password</span>
 
-                    <Form.Control className='rounded' type="password" placeholder="Enter password" onChange={e => setUserData({ ...userData, password: e.target.value })} value={userData.password} />
+                    <div className='d-flex align-items-center mb-2'>
+                      <Form.Control className='rounded ' type={Show ? "text" : "password"} placeholder="Enter password" onChange={e => setUserData({ ...userData, password: e.target.value })} value={userData.password} />
+                      <label style={{ cursor: 'pointer', marginLeft: '-25px' }} onClick={handleShow} >{Show ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}</label>
+                    </div>
                   </Form.Group>
                   {insideRegister ? <div className="d-grid gap-2">
-                    <Button onClick={handleRegister} className='btn  mb-2'>Sign up</Button>
+                    {loading ? <PulseLoader
+                      color={'#ED7117'}
+                      loading={loading}
+
+                      size={30}
+                      aria-label="Loading Spinner"
+                      data-testid="loader"
+                    /> : <Button onClick={handleRegister} className='btn  mb-2'>Sign up</Button>}
                   </div> :
                     <div className="d-grid gap-2">
-                      <Button onClick={handleLogin} className='btn  mb-2'>Login</Button>
+                      {loading ? <HashLoader
+                        color={'#ED7117'}
+                        loading={loading}
+
+                        size={30}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                      /> : <Button onClick={handleLogin} className='btn  mb-2'>Login</Button>}
                     </div>
                   }
                   <div className='row text-center'>
@@ -134,7 +164,7 @@ function Auth({ insideRegister }) {
           </div>
         </div>
       </div>
-      <ToastContainer theme='colored' position='top-center' />
+      <ToastContainer theme='colored' />
     </div>
   )
 }
