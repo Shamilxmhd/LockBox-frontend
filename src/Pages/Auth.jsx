@@ -9,17 +9,19 @@ import { tokenAuthContext } from '../ContextAPI/TokenAuth';
 import ClipLoader from "react-spinners/ClipLoader";
 import HashLoader from "react-spinners/HashLoader";
 
+
 function Auth({ insideRegister }) {
+  const navigate = useNavigate()
   const [isSubmit, setIsSubmit] = useState(false);
   const { isAutherised, setIsAutherised } = useContext(tokenAuthContext)
   const [registerLoading, setRegisterLoading] = useState(false)
   const [loginLoading, setLoginLoading] = useState(false)
-  const navigate = useNavigate()
   const [formErrors, setFormErrors] = useState({});
   const [userData, setUserData] = useState({
     username: '', email: '', password: ''
   })
   console.log(userData);
+
 
   // register
   const handleRegister = async (e) => {
@@ -50,8 +52,7 @@ function Auth({ insideRegister }) {
         setFormErrors(validate(userData));
         setIsSubmit(true);
         if (result.status == 200) {
-
-          toast.success(`${result.data.username} has registered successfully`)
+          //toast.success(`${result.data.username} has registered successfully`)
           setUserData({ username: '', email: '', password: '' })
           setRegisterLoading(true)
 
@@ -125,9 +126,7 @@ function Auth({ insideRegister }) {
     setShow(!Show)
   }
 
-
   const validate = (email) => {
-
     if (!email) {
       errors.email = "Email is required!";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
@@ -139,21 +138,24 @@ function Auth({ insideRegister }) {
 
 
   return (
-    <div className='d-flex justify-content-center align-items-center' style={{ width: '100%', height: '100vh', backgroundColor: '' }}>
+    <div className='d-flex justify-content-center align-items-center' style={{ width: '100%', height: '100vh', backgroundColor: '#E67F48' }}>
       {loginLoading ?
         <HashLoader color={'#ED7117'} loading={loginLoading} size={80} aria-label="Loading Spinner" data-testid="loader" />
         :
         <div className='container w-75' >
-          <div className="card  shadow  " style={{ background: 'transparent' }}>
+          <div className="card shadow" style={{ background: '' }}>
             <div className="row align-items-center">
-              <div className="col-lg-6">
-                <img className='rounded shadow img-fluid' style={{ width: '100%', height: '669px' }} src={SignUpImage} alt="no image" />
+              <div className="col-lg-6 d-none d-lg-block">
+                <img className='rounded shadow img-fluid' style={{ height: '84vh' }} src={SignUpImage} alt="no image" />
               </div>
               <div className="col-lg-6 p-5">
                 <div className="d-flex flex-column align-items-center ">
                   <Form className='w-100'>
                     <div className='text-center'>
-                      <span style={{ fontWeight: '700', fontSize: '35px', color: 'black' }}>Get Started</span>
+                      {insideRegister ? <span style={{ fontWeight: '700', fontSize: '35px', color: 'black' }}>Get Started</span>
+                        :
+                        <span style={{ fontWeight: '700', fontSize: '35px', color: 'black' }}>Login</span>
+                      }
                       {insideRegister ? <p>Already have an Account?Click here to <Link style={{ color: 'red', fontWeight: '500' }} to={'/login'}>Login</Link></p> :
                         <p>New User?Click here to <Link style={{ color: 'red', fontWeight: '500' }} to={'/register'}>SignUp</Link></p>}
                     </div>
@@ -163,7 +165,6 @@ function Auth({ insideRegister }) {
                     </Form.Group>}
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <span style={{ fontWeight: '600', fontSize: '20px' }} className='text-dark'>Email</span>
-
                       <Form.Control className='rounded' type="email" placeholder="Enter email" onChange={e => setUserData({ ...userData, email: e.target.value })} value={userData.email} /> <p className='text-danger fs-6'>{formErrors.email}</p>
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicPassword">
@@ -185,16 +186,14 @@ function Auth({ insideRegister }) {
                       </div>
                     }
                     <div className='row text-center'>
-                      {insideRegister && <div>
+                      {/* {insideRegister && <div>
                         <span>Or </span>
-                      </div>}
-                      {insideRegister && <div className="d-grid gap-2">
+                      </div>} */}
+                      {/* {insideRegister && <div className="d-grid gap-2">
                         <Button className='btn btn-light mb-2'> <i class="fa-brands fa-google me-1"></i>Continue with Google</Button>
-                      </div>}
+                      </div>} */}
                       <Link to={'/home'}><i class="fa-solid fa-house fs-3"></i></Link>
                     </div>
-
-
                   </Form>
                 </div>
               </div>

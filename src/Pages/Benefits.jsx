@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
 import LoginImage from '../assets/Images/Login.png'
 import CreditCardImage from '../assets/Images/CreditCard.png'
-
-
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 
 function Benefits() {
-  return (
+
+  useEffect(()=>{
+    Aos.init({duration:2000});
+  },[])
+  
+
+return (
     <>
       <Header />
       <div className='container' style={{ marginTop: '90px' }}>
@@ -25,7 +31,7 @@ function Benefits() {
           <div className="col-lg-5">
             <img className='img-fluid' src={LoginImage} alt="no image" />
           </div>
-          <div className="col-lg-4">
+          <div data-aos="fade-up" className="col-lg-4">
             <p style={{ fontSize: '45px', fontWeight: '700' }}>Automatically sign in with one click</p>
             <p>End the tedious manual typing as Locker automatically logs in to your favorite websites using saved credentials.</p>
           </div>
@@ -33,16 +39,14 @@ function Benefits() {
         {/* part 3 */}
         <div className="row align-items-center">
           <div className="col-lg-2"></div>
-          <div className="col-lg-4">
-          <p style={{ fontSize: '45px', fontWeight: '700' }}>Hassle-free shopping</p>
+          <div data-aos="fade-up" className="col-lg-4">
+            <p style={{ fontSize: '45px', fontWeight: '700' }}>Hassle-free shopping</p>
             <p>Browse and shop in one go as Locker fills in visa/master card information for you.</p>
           </div>
           <div className="col-lg-6">
             <img className='img-fluid' style={{ height: '500px', width: '500px' }} src={CreditCardImage} alt="" />
-
           </div>
         </div>
-
       </div>
       <Footer />
     </>

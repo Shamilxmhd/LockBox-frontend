@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../Components/Header'
 import LockerImage from '../assets/Images/lock.png'
 import { Link } from 'react-router-dom'
@@ -12,9 +12,16 @@ import AppStoreImage from '../assets/Images/AppStore.png'
 import LapScreenImage from '../assets/Images/LapScreen.png'
 import Footer from '../Components/Footer'
 import '../home.css'
-
+import 'animate.css';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 function Home() {
+
+useEffect(()=>{
+  Aos.init({duration:2000});
+},[])
+
   return (
     <>
 
@@ -24,15 +31,14 @@ function Home() {
         <div className="row align-items-center" style={{ marginTop: '90px' }}>
           <div className="col-lg-2"></div>
           <div className="col-lg-4 mt-2">
-            <h1 className=''>Enjoy A Secure and Seamless Internet Experience</h1>
+            <h1 className='animate__animated animate__slideInUp'style={{animationDuration:'1.8s'}}>Enjoy A Secure and Seamless Internet Experience</h1>
             <hr />
-            <p>Store your passwords, manage sensitive data, fill in forms and log you into your favorite sites with just one click. Locker is here to help.</p>
+            <p className='animate__animated animate__fadeIn'style={{animationDuration:'1.8s'}}>Store your passwords, manage sensitive data, fill in forms and log you into your favorite sites with just one click. Locker is here to help.</p>
             <div className={(window.innerWidth <= 576 ? ' text-center' : '')}>
               <Link to={'/register'} className='btn btn-warning' style={{ textDecoration: 'none' }}>Create an Account</Link>
             </div>
-
           </div>
-          <div className="col-lg-6">
+          <div data-aos="fade-down" className="col-lg-6">
             <img className='img-fluid' src={LockerImage} alt="no image" />
           </div>
         </div>
@@ -81,24 +87,24 @@ function Home() {
             <Link to={'/benefits'} style={{ textDecoration: 'none' }} className='btn btn-outline-warning'>See more</Link>
           </div>
         </div>
-
         {/* part 3 */}
         <div className='row align-items-center mt-5'>
           <div className="col-lg-2"></div>
-          <div className="col-lg-4 text-center">
+          <div data-aos="fade-down" className="col-lg-4 text-center">
             <h1 className=''>Logins Made Simple</h1>
             <p>Store your passwords, manage sensitive data, fill in forms and log you into your favorite sites with just one click. Locker is here to help.</p>
           </div>
-          <div className="col-lg-6 text-center">
+          <div data-aos="fade-up" className="col-lg-6 text-center">
             <img className='img-fluid' src={LoginImage} alt="no image" />
           </div>
         </div>
         {/* part 4  */}
         <div className="row align-items-center mt-5">
           <div className="col-lg-1"></div>
-          <div className="col-lg-5 text-center">
+          <div  data-aos="fade-up" className="col-lg-5 text-center">
             <img className='img-fluid' style={{ height: '350px', width: '350px' }} src={CreditCardImage} alt="" />
           </div>
+         
           <div className="col-lg-4 text-center">
             <h1>Browse and Shop In Minutes</h1>
             <p>Locker automatically fills in your login details and credit card information for a smooth checkout process. Shopping takes time, but not paying.</p>
@@ -111,7 +117,7 @@ function Home() {
             <h1>Save Time and Efforts</h1>
             <p>Save your valuable time and efforts for other activities other than filling passwords and personal details. Trust those tedious tasks to Locker.</p>
           </div>
-          <div className="col-lg-6 mb-5 text-center">
+          <div data-aos="fade-up" className="col-lg-6 mb-5 text-center">
             <img style={{ marginTop: '-6px' }} src={TimeImage} alt="no image" />
           </div>
         </div>
@@ -120,13 +126,13 @@ function Home() {
           <p style={{ fontSize: '40px', fontWeight: '900' }}>We are on</p>
           <div className="col-lg-1"></div>
           {/*images */}
-          <div className="col-lg-4 mb-5">
+          <div data-aos="zoom-out" className="col-lg-4 mb-5">
             <img style={{ width: '150px', height: '90px' }} src={GetAppImage} alt="no image" />
           </div>
-          <div className="col-lg-2 mb-5">
+          <div data-aos="zoom-out" className="col-lg-2 mb-5">
             <img style={{ width: '150px', height: '90px' }} src={GooglePlayImage} alt="no image" />
           </div>
-          <div className="col-lg-3 mb-5">
+          <div data-aos="zoom-out" className="col-lg-3 mb-5">
             <img style={{ width: '50px', height: '50px' }} src={AppStoreImage} alt="no image" /><span className='fw-bolder fs-4'>App Store</span>
           </div>
         </div>
@@ -143,7 +149,6 @@ function Home() {
             <p>Locker works on every device, operating system, and browser you are using.</p>
           </div>
         </div>
-
       </div>
       <Footer />
     </>

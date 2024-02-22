@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { editIdentityAPI } from '../Services/allAPIs';
 import { editIdentityResponseContext } from '../ContextAPI/ContextShare';
 
-
 function EditIdentity({ identity }) {
   const { editIdentityResponse, setEditIdentityResponse } = useContext(editIdentityResponseContext)
   const [IdentityData, setIdentityData] = useState({
@@ -52,8 +51,8 @@ function EditIdentity({ identity }) {
 
   const handleUpdate = async () => {
     const { itemName, firstName, lastName, username, email, company, phone, passportNumber, licenseNumber, address, city, state, postalCode, country } = IdentityData
-    if (!itemName || !firstName || !lastName || !username || !email || !company || !phone || !passportNumber || !licenseNumber || !address || !city || !state || !postalCode || !country) {
-      toast.info('Please fill the form completely!!!')
+    if (!itemName || !firstName) {
+      toast.info('Please fill in the required fields!!!')
     } else {
       const token = sessionStorage.getItem('token')
       if (token) {
@@ -80,7 +79,10 @@ function EditIdentity({ identity }) {
 
   return (
     <>
-      <button style={{marginRight:'-25px'}}  className='btn' onClick={handleShow}><i className="fa-regular fa-pen-to-square text-dark"></i></button>
+      <button style={{ marginRight: '-25px' }} className='btn' onClick={handleShow}>
+        <i className="fa-regular fa-pen-to-square text-dark"></i>
+      </button>
+      {/* modal */}
       <Modal
         show={show}
         onHide={handleClose}
@@ -93,63 +95,52 @@ function EditIdentity({ identity }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form >
-              <FloatingLabel className="mb-3 rounded" label="Item name">
-                <Form.Control type="text" placeholder="Item name" onChange={e => setIdentityData({ ...IdentityData, itemName: e.target.value })} value={IdentityData.itemName} />
-              </FloatingLabel>
-
-              <Form.Label className='fw-bold'>Personal Information</Form.Label>
-
-              <div className="mb-3">
-                <div className='d-flex'>
-                  <FloatingLabel label="First name" className='me-5'> <Form.Control type="text" placeholder="First name" onChange={e => setIdentityData({ ...IdentityData, firstName: e.target.value })} value={IdentityData.firstName} /></FloatingLabel>
-                  <FloatingLabel label="Last name" > <Form.Control type="text" placeholder="Last name" onChange={e => setIdentityData({ ...IdentityData, lastName: e.target.value })} value={IdentityData.lastName} /></FloatingLabel>
-                </div>
+          <Form >
+            <FloatingLabel className="mb-3 rounded" label={<span>Item name<span style={{ color: 'red' }}>*</span></span>}>
+              <Form.Control type="text" placeholder="Item name" onChange={e => setIdentityData({ ...IdentityData, itemName: e.target.value })} value={IdentityData.itemName} />
+            </FloatingLabel>
+            <Form.Label className='fw-bold'>Personal Information</Form.Label>
+            <div className="mb-3">
+              <div className='d-flex'>
+                <FloatingLabel label={<span>First name<span style={{ color: 'red' }}>*</span></span>} className='me-5'> <Form.Control type="text" placeholder="First name" onChange={e => setIdentityData({ ...IdentityData, firstName: e.target.value })} value={IdentityData.firstName} /></FloatingLabel>
+                <FloatingLabel label="Last name" > <Form.Control type="text" placeholder="Last name" onChange={e => setIdentityData({ ...IdentityData, lastName: e.target.value })} value={IdentityData.lastName} /></FloatingLabel>
               </div>
-
-              <div className="mb-3"  >
-                <div className='d-flex'>
-                  <FloatingLabel label="Username" className='me-5'><Form.Control type="text" placeholder="Username" onChange={e => setIdentityData({ ...IdentityData, username: e.target.value })} value={IdentityData.username} /></FloatingLabel>
-                  <FloatingLabel label="Email"><Form.Control type="email" placeholder="Email" onChange={e => setIdentityData({ ...IdentityData, email: e.target.value })} value={IdentityData.email} /></FloatingLabel>
-                </div>
+            </div>
+            <div className="mb-3"  >
+              <div className='d-flex'>
+                <FloatingLabel label="Username" className='me-5'><Form.Control type="text" placeholder="Username" onChange={e => setIdentityData({ ...IdentityData, username: e.target.value })} value={IdentityData.username} /></FloatingLabel>
+                <FloatingLabel label="Email"><Form.Control type="email" placeholder="Email" onChange={e => setIdentityData({ ...IdentityData, email: e.target.value })} value={IdentityData.email} /></FloatingLabel>
               </div>
-
-              <div className="mb-3" >
-                <div className='d-flex'>
-                  <FloatingLabel label="Company" className='me-5'> <Form.Control type="text" placeholder="Company" onChange={e => setIdentityData({ ...IdentityData, company: e.target.value })} value={IdentityData.company} /></FloatingLabel>
-                  <FloatingLabel label="Phone"><Form.Control type="text" placeholder="Phone" onChange={e => setIdentityData({ ...IdentityData, phone: e.target.value })} value={IdentityData.phone} /></FloatingLabel>
-                </div>
+            </div>
+            <div className="mb-3" >
+              <div className='d-flex'>
+                <FloatingLabel label="Company" className='me-5'> <Form.Control type="text" placeholder="Company" onChange={e => setIdentityData({ ...IdentityData, company: e.target.value })} value={IdentityData.company} /></FloatingLabel>
+                <FloatingLabel label="Phone"><Form.Control type="text" placeholder="Phone" onChange={e => setIdentityData({ ...IdentityData, phone: e.target.value })} value={IdentityData.phone} /></FloatingLabel>
               </div>
-
-              <div className="mb-3">
-                <div className='d-flex'>
-                  <FloatingLabel label="Passport number" className='me-5'> <Form.Control type="text" placeholder="Passport number" onChange={e => setIdentityData({ ...IdentityData, passportNumber: e.target.value })} value={IdentityData.passportNumber} /></FloatingLabel>
-                  <FloatingLabel label="License number"> <Form.Control type="text" placeholder="License number" onChange={e => setIdentityData({ ...IdentityData, licenseNumber: e.target.value })} value={IdentityData.licenseNumber} /></FloatingLabel>
-                </div>
+            </div>
+            <div className="mb-3">
+              <div className='d-flex'>
+                <FloatingLabel label="Passport number" className='me-5'> <Form.Control type="text" placeholder="Passport number" onChange={e => setIdentityData({ ...IdentityData, passportNumber: e.target.value })} value={IdentityData.passportNumber} /></FloatingLabel>
+                <FloatingLabel label="License number"> <Form.Control type="text" placeholder="License number" onChange={e => setIdentityData({ ...IdentityData, licenseNumber: e.target.value })} value={IdentityData.licenseNumber} /></FloatingLabel>
               </div>
-
-              <Form.Label className='fw-bold'>Contact Information</Form.Label>
-
-              <FloatingLabel label="Address" className="mb-3 rounded">
-                <Form.Control type="text" placeholder="Address" onChange={e => setIdentityData({ ...IdentityData, address: e.target.value })} value={IdentityData.address} />
-              </FloatingLabel>
-
-              <FloatingLabel label="City" className="mb-3 rounded">
-                <Form.Control type="text" placeholder="City" onChange={e => setIdentityData({ ...IdentityData, city: e.target.value })} value={IdentityData.city} />
-              </FloatingLabel>
-
-              <FloatingLabel label="State" className="mb-3 rounded">
-                <Form.Control type="text" placeholder="State" onChange={e => setIdentityData({ ...IdentityData, state: e.target.value })} value={IdentityData.state} />
-              </FloatingLabel>
-
-              <FloatingLabel label="Postal code" className="mb-3 rounded">
-                <Form.Control type="text" placeholder="Postal code" onChange={e => setIdentityData({ ...IdentityData, postalCode: e.target.value })} value={IdentityData.postalCode} />
-              </FloatingLabel>
-
-              <FloatingLabel label="Country" className="mb-3 rounded">
-                <Form.Control type="text" placeholder="Country" onChange={e => setIdentityData({ ...IdentityData, country: e.target.value })} value={IdentityData.country} />
-              </FloatingLabel>
-            </Form>
+            </div>
+            <Form.Label className='fw-bold'>Contact Information</Form.Label>
+            <FloatingLabel label="Address" className="mb-3 rounded">
+              <Form.Control type="text" placeholder="Address" onChange={e => setIdentityData({ ...IdentityData, address: e.target.value })} value={IdentityData.address} />
+            </FloatingLabel>
+            <FloatingLabel label="City" className="mb-3 rounded">
+              <Form.Control type="text" placeholder="City" onChange={e => setIdentityData({ ...IdentityData, city: e.target.value })} value={IdentityData.city} />
+            </FloatingLabel>
+            <FloatingLabel label="State" className="mb-3 rounded">
+              <Form.Control type="text" placeholder="State" onChange={e => setIdentityData({ ...IdentityData, state: e.target.value })} value={IdentityData.state} />
+            </FloatingLabel>
+            <FloatingLabel label="Postal code" className="mb-3 rounded">
+              <Form.Control type="text" placeholder="Postal code" onChange={e => setIdentityData({ ...IdentityData, postalCode: e.target.value })} value={IdentityData.postalCode} />
+            </FloatingLabel>
+            <FloatingLabel label="Country" className="mb-3 rounded">
+              <Form.Control type="text" placeholder="Country" onChange={e => setIdentityData({ ...IdentityData, country: e.target.value })} value={IdentityData.country} />
+            </FloatingLabel>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Cancel</Button>

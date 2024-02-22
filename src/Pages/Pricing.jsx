@@ -8,9 +8,9 @@ function Pricing() {
     <>
       <Header />
       <div className='container' style={{ marginTop: '90px' }}>
-       <div className='p-5  align-items-center row  mt-5 mb-5'>
-<img src={PricingImage} alt="no image" /> 
-       </div>
+        <div className='p-5  align-items-center row  mt-5 mb-5'>
+          <img src={PricingImage} alt="no image" />
+        </div>
       </div>
       <Footer />
     </>

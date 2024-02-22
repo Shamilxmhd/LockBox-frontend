@@ -32,7 +32,6 @@ function Card() {
     }
   }
 
-
   useEffect(() => {
     getUserCards()
     if (sessionStorage.getItem('username')) {
@@ -55,7 +54,7 @@ function Card() {
         </div>
         <hr />
         <div>
-          <h1 style={{fontFamily:'"Kanit", sans-serif'}} className=''>Cards</h1>
+          <h1 style={{ fontFamily: '"Kanit", sans-serif' }} className=''>Cards</h1>
         </div>
         <hr />
         <div>
@@ -64,9 +63,9 @@ function Card() {
             :
             null}
         </div>
-        <div>
+        <div className='w-100'>
           {allCards.length > 0 ?
-            <Table>
+            <Table className='text-center'>
               <thead>
                 <tr>
                   <th></th>

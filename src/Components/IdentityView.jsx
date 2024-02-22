@@ -6,7 +6,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { removeIdentityResponseContext } from '../ContextAPI/ContextShare';
 
-
 function IdentityView({ identity }) {
   const { removIdentityResponse, setRemoveIdentityResponse } = useContext(removeIdentityResponseContext)
   const [show, setShow] = useState(false);
@@ -36,12 +35,14 @@ function IdentityView({ identity }) {
 
   return (
     <>
-     <button className='btn'> <td className='fw-bolder fs-5' style={{color:'#ED7117'}} onClick={handleShow}>{identity.itemName}</td></button>
+      <td className='fw-bold fs-4' style={{ color: '#ED7117',cursor:'pointer' }}
+        onClick={handleShow}>{identity.itemName}</td>
       <td>{identity.firstName}</td>
       <td>3 minutes ago</td>
       <td><EditIdentity identity={identity} /><button className='btn' onClick={() => { handleDeleteIdentity(identity?._id) }}><i className="fa-solid fa-trash text-danger"></i></button></td>
+      {/* modal */}
       <Modal show={show} onHide={handleClose}>
-      <h4 className='ms-3 mt-2'>Personal Information</h4>
+        <h4 className='ms-3 mt-2'>Personal Information</h4>
         <Modal.Body>First name : {identity.firstName} </Modal.Body>
         <Modal.Body>Last name : {identity.lastName} </Modal.Body>
         <Modal.Body>Username : {identity.username} </Modal.Body>

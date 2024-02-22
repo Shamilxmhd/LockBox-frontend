@@ -41,11 +41,9 @@ function EditCard({ card }) {
 
   const handleUpdate = async () => {
     const { itemName, cardholderName, cardNumber, month, year, cvv } = cardData
-
-    if (!itemName || !cardholderName || !cardNumber || !month || !year || !cvv) {
-      toast.info('Please fill the form completely!!!')
+    if (!itemName || !cardholderName) {
+      toast.info('Please fill in the required fields!!!')
     } else {
-
       const token = sessionStorage.getItem('token')
       console.log(token);
       if (token) {
@@ -60,7 +58,6 @@ function EditCard({ card }) {
           if (result.status == 200) {
             handleClose()
             setEditCardResponse(result.data)
-
           } else {
             toast.warning(result.response.data)
           }
@@ -71,12 +68,10 @@ function EditCard({ card }) {
     }
   }
 
-
-
-
   return (
     <>
       <button style={{ marginRight: '-25px' }} onClick={handleShow} className='btn'><i className="fa-regular fa-pen-to-square text-dark"></i></button>
+      {/* modal */}
       <Modal
         show={show}
         onHide={handleClose}
@@ -88,11 +83,11 @@ function EditCard({ card }) {
         </Modal.Header>
         <Modal.Body>
           <Form >
-            <FloatingLabel className="mb-3 rounded" label="Item name" >
+            <FloatingLabel className="mb-3 rounded" label={<span>Item name<span style={{ color: 'red' }}>*</span></span>}>
               <Form.Control type="text" placeholder="Item name" onChange={e => setCardData({ ...cardData, itemName: e.target.value })} value={cardData.itemName} />
             </FloatingLabel>
             <Form.Label className='fw-bold'>Card Information</Form.Label>
-            <FloatingLabel className="mb-3 rounded" label="Cardholder name" >
+            <FloatingLabel className="mb-3 rounded" label={<span>Cardholder name<span style={{ color: 'red' }}>*</span></span>}>
               <Form.Control type="text" placeholder="Cardholder name" onChange={e => setCardData({ ...cardData, cardholderName: e.target.value })} value={cardData.cardholderName} />
             </FloatingLabel>
             <FloatingLabel className="mb-3 rounded" label="Card number" >

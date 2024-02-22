@@ -9,11 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { getUserIdentityAPI } from '../Services/allAPIs';
 import { addIdentityResponseContext, editIdentityResponseContext, removeIdentityResponseContext } from '../ContextAPI/ContextShare';
 
-
 function Identity() {
   const { removIdentityResponse, setRemoveIdentityResponse } = useContext(removeIdentityResponseContext)
   const { editIdentityResponse, setEditIdentityResponse } = useContext(editIdentityResponseContext)
   const { addIdentityResponse, setAddIdentityResponse } = useContext(addIdentityResponseContext)
+
   const [username, setUsername] = useState('')
   const [allIdentities, setAllIdentities] = useState([])
 
@@ -54,35 +54,37 @@ function Identity() {
         </div>
         <hr />
         <div>
-          <h1 style={{fontFamily:'"Kanit", sans-serif'}} className='fw-bold'>Identites</h1>
+          <h1 style={{ fontFamily: '"Kanit", sans-serif' }} className='fw-bold'>Identites</h1>
         </div>
         <hr />
         <div>
-          {allIdentities?.length > 0 ? <AddIdentity />
+          {allIdentities?.length > 0 ?
+            <AddIdentity />
             : null
           }
         </div>
-        <div className="w-100">
-          {allIdentities.length > 0 ? <Table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>First name</th>
-                <th>created time</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allIdentities?.length > 0 ? allIdentities.map(identity => (
+        <div className='w-100'>
+          {allIdentities.length > 0 ?
+            <Table className='text-center'>
+              <thead>
                 <tr>
-                  <IdentityView identity={identity} />
+                  <th></th>
+                  <th>First name</th>
+                  <th>created time</th>
+                  <th>Actions</th>
                 </tr>
-              ))
-                :
-                null
-              }
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {allIdentities?.length > 0 ? allIdentities.map(identity => (
+                  <tr>
+                    <IdentityView identity={identity} />
+                  </tr>
+                ))
+                  :
+                  null
+                }
+              </tbody>
+            </Table>
             :
             <div className="d-flex flex-column align-items-center p-5">
               <div className='text-center'>

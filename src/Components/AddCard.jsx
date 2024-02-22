@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { addCardAPI } from '../Services/allAPIs';
 import { addCardResponseContext } from '../ContextAPI/ContextShare';
 
-
 function AddCard() {
   const { addCardResponse, setAddCardResponse } = useContext(addCardResponseContext)
   const [cardData, setCardData] = useState({
@@ -35,14 +34,10 @@ function AddCard() {
 
 
   const handleAddCard = async () => {
-
     const { itemName, cardholderName, cardNumber, month, year, cvv } = cardData
-    if (!itemName || !cardholderName || !cardNumber || !month || !year || !cvv) {
-      toast.info('please fill the form completely!!!')
-
+    if (!itemName || !cardholderName) {
+      toast.info('Please fill the required fields!!!')
     } else {
-
-
       // req header
       const token = sessionStorage.getItem('token')
       console.log(token);
@@ -62,12 +57,10 @@ function AddCard() {
           } else {
             toast.warning(result.response.data)
           }
-
         } catch (err) {
           console.log(result);
         }
       }
-
     }
   }
 
@@ -76,7 +69,6 @@ function AddCard() {
     <>
       <div className=' '>
         <Button onClick={handleShow}>Add Payment Card</Button>
-
         {/* Modal */}
         <Modal
           show={show}
@@ -89,11 +81,11 @@ function AddCard() {
           </Modal.Header>
           <Modal.Body>
             <Form >
-              <FloatingLabel className="mb-3 rounded" label="Item name" >
+              <FloatingLabel className="mb-3 rounded" label={<span>Item name<span style={{ color: 'red' }}>*</span></span>}>
                 <Form.Control type="text" placeholder="Item name" onChange={e => setCardData({ ...cardData, itemName: e.target.value })} value={cardData.itemName} />
               </FloatingLabel>
               <Form.Label className='fw-bold'>Card Information</Form.Label>
-              <FloatingLabel className="mb-3 rounded" label="Cardholder name" >
+              <FloatingLabel className="mb-3 rounded" label={<span>Cardholder name<span style={{ color: 'red' }}>*</span></span>}>
                 <Form.Control type="text" placeholder="Cardholder name" onChange={e => setCardData({ ...cardData, cardholderName: e.target.value })} value={cardData.cardholderName} />
               </FloatingLabel>
               <FloatingLabel className="mb-3 rounded" label="Card number" >
@@ -120,7 +112,7 @@ function AddCard() {
           </Modal.Footer>
         </Modal>
       </div>
-      <ToastContainer theme='colored' position='top-center' />
+      <ToastContainer theme='colored' />
     </>
   )
 }

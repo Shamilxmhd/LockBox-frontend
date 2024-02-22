@@ -12,8 +12,6 @@ import Pricing from './Pages/Pricing'
 import { useContext } from 'react'
 import { tokenAuthContext } from './ContextAPI/TokenAuth'
 
-
-
 function App() {
   const { isAutherised, setIsAutherised } = useContext(tokenAuthContext)
 

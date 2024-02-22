@@ -11,12 +11,10 @@ function Profile() {
   const { isAutherised, setIsAutherised } = useContext(tokenAuthContext)
   const navigate = useNavigate()
 
-
   useEffect(() => {
     setUsername(sessionStorage.getItem('username'))
   }
     , [])
-
 
   useEffect(() => {
     setUserEmail(sessionStorage.getItem('email'))
@@ -33,6 +31,7 @@ function Profile() {
   }
 
   return (
+
     <>
       {/* card */}
       <Card style={{ width: '70rem', height: '8rem' }}>
@@ -52,7 +51,6 @@ function Profile() {
             <div>
               <Button onClick={handleLogout} variant="outline-danger">Log Out</Button>
             </div>
-
           </div>
         </ListGroup>
       </Card>

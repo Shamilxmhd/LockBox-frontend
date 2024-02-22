@@ -8,7 +8,6 @@ import ContextShare from './ContextAPI/ContextShare.jsx'
 import TokenAuth from './ContextAPI/TokenAuth.jsx'
 
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <TokenAuth>
