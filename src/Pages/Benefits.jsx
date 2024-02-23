@@ -33,7 +33,7 @@ return (
           </div>
           <div data-aos="fade-up" className="col-lg-4">
             <p style={{ fontSize: '45px', fontWeight: '700' }}>Automatically sign in with one click</p>
-            <p>End the tedious manual typing as Locker automatically logs in to your favorite websites using saved credentials.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, explicabo.</p>
           </div>
         </div>
         {/* part 3 */}
@@ -41,7 +41,7 @@ return (
           <div className="col-lg-2"></div>
           <div data-aos="fade-up" className="col-lg-4">
             <p style={{ fontSize: '45px', fontWeight: '700' }}>Hassle-free shopping</p>
-            <p>Browse and shop in one go as Locker fills in visa/master card information for you.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit laborum expedita harum.</p>
           </div>
           <div className="col-lg-6">
             <img className='img-fluid' style={{ height: '500px', width: '500px' }} src={CreditCardImage} alt="" />
