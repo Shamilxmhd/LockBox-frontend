@@ -140,7 +140,7 @@ function Auth({ insideRegister }) {
   return (
     <div className='d-flex justify-content-center align-items-center' style={{ width: '100%', height: '100vh', backgroundColor: '#E67F48' }}>
       {loginLoading ?
-        <HashLoader color={'#ED7117'} loading={loginLoading} size={80} aria-label="Loading Spinner" data-testid="loader" />
+        <HashLoader color={'#ED7117'} loading={loginLoading} size={85} aria-label="Loading Spinner" data-testid="loader" />
         :
         <div className='container w-75' >
           <div className="card shadow" style={{ background: '' }}>

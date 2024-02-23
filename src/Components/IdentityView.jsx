@@ -35,10 +35,10 @@ function IdentityView({ identity }) {
 
   return (
     <>
-      <td className='fw-bold fs-4' style={{ color: '#ED7117',cursor:'pointer' }}
+      <td className='fw-bold fs-4' style={{ color: '#ED7117', cursor: 'pointer' }}
         onClick={handleShow}>{identity.itemName}</td>
       <td>{identity.firstName}</td>
-      <td>3 minutes ago</td>
+      <td>{new Date(identity.createdAt).toLocaleTimeString()}</td>
       <td><EditIdentity identity={identity} /><button className='btn' onClick={() => { handleDeleteIdentity(identity?._id) }}><i className="fa-solid fa-trash text-danger"></i></button></td>
       {/* modal */}
       <Modal show={show} onHide={handleClose}>

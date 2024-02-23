@@ -6,6 +6,9 @@ import { toast } from 'react-toastify';
 import { removeCardResponseContext } from '../ContextAPI/ContextShare';
 
 function CardView({ card }) {
+
+
+
   const { removeCardResponse, setRemoveCardResponse } = useContext(removeCardResponseContext)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -36,7 +39,7 @@ function CardView({ card }) {
       <td className='fw-bold fs-4' style={{ color: '#ED7117', cursor: 'pointer' }}
         onClick={handleShow}>{card.itemName}</td>
       <td>{card.cardholderName}</td>
-      <td>3 minutes ago</td>
+      <td>{new Date(card.createdAt).toLocaleTimeString()}</td>
       <td><EditCard card={card} /><button className='btn' onClick={() => { handleDeleteCard(card?._id) }}><i className="fa-solid fa-trash text-danger"></i></button></td>
       {/* modal */}
       <Modal show={show} onHide={handleClose}>

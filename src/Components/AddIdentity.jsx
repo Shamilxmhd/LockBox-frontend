@@ -11,7 +11,7 @@ function AddIdentity() {
 
   const { addIdentityResponse, setAddIdentityResponse } = useContext(addIdentityResponseContext)
   const [IdentityData, setIdentityData] = useState({
-    itemName: '', firstName: '', lastName: '', username: '', email: '', company: '', phone: '', passportNumber: '', licenseNumber: '', address: '', city: '', state: '', postalCode: '', country: ''
+    itemName: '', firstName: '', lastName: '', username: '', email: '', company: '', phone: '', passportNumber: '', licenseNumber: '', address: '', city: '', state: '', postalCode: '', country: '', createdAt: new Date()
   })
   console.log(IdentityData);
 
@@ -20,14 +20,14 @@ function AddIdentity() {
   const handleClose = () => {
     setShow(false)
     setIdentityData({
-      itemName: '', firstName: '', lastName: '', username: '', email: '', company: '', phone: '', passportNumber: '', licenseNumber: '', address: '', city: '', state: '', postalCode: '', country: ''
+      itemName: '', firstName: '', lastName: '', username: '', email: '', company: '', phone: '', passportNumber: '', licenseNumber: '', address: '', city: '', state: '', postalCode: '', country: '', createdAt: new Date()
     })
   };
 
   const handleShow = () => setShow(true);
 
   const handleAddIdentity = async () => {
-    const { itemName, firstName, lastName, username, email, company, phone, passportNumber, licenseNumber, address, city, state, postalCode, country } = IdentityData
+    const { itemName, firstName} = IdentityData
     if (!itemName || !firstName) {
       toast.info('Please fill the required fields!!!')
     } else {

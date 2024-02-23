@@ -15,7 +15,8 @@ function AddCard() {
     cardNumber: '',
     month: '',
     year: '',
-    cvv: ''
+    cvv: '',
+    createdAt: new Date()
   })
   console.log(cardData);
   const [show, setShow] = useState(false);
@@ -27,14 +28,15 @@ function AddCard() {
       cardNumber: '',
       month: '',
       year: '',
-      cvv: ''
+      cvv: '',
+      createdAt: new Date()
     })
   };
   const handleShow = () => setShow(true);
 
 
   const handleAddCard = async () => {
-    const { itemName, cardholderName, cardNumber, month, year, cvv } = cardData
+    const { itemName, cardholderName} = cardData
     if (!itemName || !cardholderName) {
       toast.info('Please fill the required fields!!!')
     } else {
