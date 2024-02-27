@@ -1,15 +1,15 @@
 import React from 'react'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
-import PricingImage from '../assets/Images/PricingPlan.jpeg'
-
+import AddPricing from '../Components/AddPricing'
 function Pricing() {
-  return (
+
+return (
     <>
       <Header />
       <div className='container' style={{ marginTop: '90px' }}>
         <div className='p-5  align-items-center row  mt-5 mb-5'>
-          <img src={PricingImage} alt="no image" />
+          <AddPricing />
         </div>
       </div>
       <Footer />

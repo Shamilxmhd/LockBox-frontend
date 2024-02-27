@@ -1,0 +1,7 @@
+.pricing-card {
+    transition: border-color 0.3s;
+}
+
+.pricing-card:hover {
+    border-color: #ED7117;
+}

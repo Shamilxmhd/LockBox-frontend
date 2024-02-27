@@ -8,6 +8,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getUserIdentityAPI } from '../Services/allAPIs';
 import { addIdentityResponseContext, editIdentityResponseContext, removeIdentityResponseContext } from '../ContextAPI/ContextShare';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComments } from '@fortawesome/free-solid-svg-icons';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 function Identity() {
   const { removIdentityResponse, setRemoveIdentityResponse } = useContext(removeIdentityResponseContext)
@@ -41,6 +45,11 @@ function Identity() {
     }
   }, [addIdentityResponse, editIdentityResponse, removIdentityResponse])
 
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      How can we help?
+    </Tooltip>
+  );
 
   return (
 
@@ -98,6 +107,13 @@ function Identity() {
         </div>
       </div>
       <ToastContainer />
+      <div className='chat-icon'>
+        <OverlayTrigger placement="left" delay={{ show: 250, hide: 400 }} overlay={renderTooltip}>
+          <a href="https://wa.me/9747508305" target="_blank" rel="noopener noreferrer" style={{ position: 'fixed', bottom: '30px', right: '30px', zIndex: '000', backgroundColor: '#25d366', color: '#fff', borderRadius: '50%', padding: '10px', textDecoration: 'none' }}>
+            <FontAwesomeIcon className='fs-3' icon={faComments} />
+          </a>
+        </OverlayTrigger>
+      </div>
     </div>
   )
 }
